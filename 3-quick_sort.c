@@ -27,8 +27,7 @@ void recursion_sort(int *array, int start, int end, size_t size)
 
 	if (start < end)
 	{
-		pivot = partition(array, start, end);
-		print_array(array, size);
+		pivot = partition(array, start, end, size);
 		recursion_sort(array, start, pivot - 1, size);
 		recursion_sort(array, pivot + 1, end, size);
 	}
@@ -39,10 +38,11 @@ void recursion_sort(int *array, int start, int end, size_t size)
  * @array: array to be sorted
  * @start: index of the first element of the array
  * @end: index of the last element of the array
+ * @size: size of the array
  *
  * Return: The pivot of the splited array
  */
-int partition(int *array, int start, int end)
+int partition(int *array, int start, int end, size_t size)
 {
 	int j;
 	int pivote = array[end];
@@ -53,10 +53,10 @@ int partition(int *array, int start, int end)
 		if (pivote >= array[j])
 		{
 			tmp_pivote++;
-			swap(array, tmp_pivote, j);
+			swap(array, tmp_pivote, j, size);
 		}
 	}
-	swap(array, tmp_pivote + 1, end);
+	swap(array, tmp_pivote + 1, end, size);
 	return (tmp_pivote + 1);
 }
 
@@ -65,13 +65,18 @@ int partition(int *array, int start, int end)
  * @array: array to be swaped
  * @first: index of the first element
  * @second: index of the second element
+ * @size: size of the array
  *
  * Return: void
  */
-void swap(int *array, int first, int second)
+void swap(int *array, int first, int second, size_t size)
 {
 	int tmp = array[first];
 
-	array[first] = array[second];
-	array[second] = tmp;
+	if (first != second)
+	{
+		array[first] = array[second];
+		array[second] = tmp;
+		print_array(array, size);
+	}
 }
