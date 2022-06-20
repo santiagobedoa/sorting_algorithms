@@ -17,6 +17,7 @@ void quick_sort(int *array, size_t size)
  * @array: array to be sorted
  * @start: index of the first element of the array
  * @end: index of the last element of the array
+ * @size: size of the array
  *
  * Return: void
  */
@@ -27,7 +28,7 @@ void recursion_sort(int *array, int start, int end, size_t size)
 	if (start < end)
 	{
 		pivot = partition(array, start, end);
-		print_array(array,size);
+		print_array(array, size);
 		recursion_sort(array, start, pivot - 1, size);
 		recursion_sort(array, pivot + 1, end, size);
 	}
