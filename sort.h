@@ -30,6 +30,6 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void swap(int *array, int first, int second);
 int partition(int *array, int start, int end);
-void recursion_sort(int *array, int start, int end);
+void recursion_sort(int *array, int start, int end, size_t size);
 
 #endif
