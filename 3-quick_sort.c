@@ -9,7 +9,7 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	recursion_sort(array, 0, size - 1);
+	recursion_sort(array, 0, size - 1, size);
 }
 
 /**
@@ -20,16 +20,16 @@ void quick_sort(int *array, size_t size)
  *
  * Return: void
  */
-void recursion_sort(int *array, int start, int end)
+void recursion_sort(int *array, int start, int end, size_t size)
 {
 	int pivot;
 
 	if (start < end)
 	{
 		pivot = partition(array, start, end);
-		recursion_sort(array, start, pivot - 1);
-		recursion_sort(array, pivot + 1, end);
-		print_array(array, end + 1);
+		print_array(array,size);
+		recursion_sort(array, start, pivot - 1, size);
+		recursion_sort(array, pivot + 1, end, size);
 	}
 }
 
